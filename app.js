@@ -86,7 +86,7 @@ app.get("/", function(req, res){
         })
 
     app.get('/sair', function(req, res ) {
-      sequelize.close().then(function(req, res){ res.render('login')}).catch(function(err){ console.log("Conexão com erro" + err)})
+     res.redirect('/')
     })
 
 }})
