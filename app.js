@@ -76,7 +76,7 @@ app.get("/", function(req, res){
         })})
     
 
-    app.get('/inserir', function(req,res){
+    app.get('/agenda', function(req,res){
         res.render('inserir')
     })
 
@@ -86,8 +86,15 @@ app.get("/", function(req, res){
         })
 
     app.get('/sair', function(req, res ) {
-     res.redirect('/')
+     sequelize.close().then(function(){
+         console.log("Deslogado com sucesso"), res.redirect('/'), process.exit(1) }).catch(function(err){ console.log("Erro " + err)})
     })
+
+
+    app.get('/clientes', function(req, res ) {
+        res.render('clientes')
+       })
+
 
 }})
 
