@@ -1,50 +1,86 @@
  <nav id="menu" class="fixed-top">        
         <ul class="nav mb-0" id="menul">
-          <li class="nav-item"><a style="color: white;"  class="nav-link" href="/clientes"> Clientes </a></li>
-          <li class="nav-item"><a style="color: white; margin-left: 500px;"  class="nav-link" href="/sair"> Sair</a></li>
+          <li class="nav-item"><a style="color: white;"  class="nav-link" href="/clientes">&#128151; Minhas Clientes </a></li>
         </ul>
  </nav>
 
+<div class="card-deck" style="margin-top: 55px; margin-left:-60px;">
 
-<div class="card-deck" style="width: 85%; margin: 65px; margin-top: 55px">
+<div class="card border-light">
+    <div class="card-body">
+    <div class="form-row">      
 
-    <div class="card">
-        <div class="card-body">
-            <h1 style="margin: 20px;"> Inserir Clientes </h1>
-            <form action="/criar" method="POST">
-     <label>Data</label>
-     <input type="date" id="data" name="data" class="form-control" autocomplete="off" required><br>
-     <label>Horario</label>
-     <input type="time" id="horario" name="horario" class="form-control" autocomplete="off" required><br> 
-     <label>Cliente </label>
-     <input type="text" id="cliente" name="cliente" class="form-control" autocomplete="off" min="5" required><br>
-     <labe>Procedimento</labe>
-     <select class="form-control" id="procedimento" name="procedimento" required>
+
+<form action="/criar_horario" method="POST">
+        <h2>Inserir Horario na Agenda</h2>
+        <div class="col-auto">
+
+   <div class="form-row">
+    
+    <div class="col-7">
+     <label>&nbsp;Cliente</label> <input type="text" class="form-control" name="cliente" autocomplete="off" required>
+    </div>
+
+    <div class="col-5">
+      <label>&nbsp;Data</label><input type="date" class="form-control" name="data" required>
+    </div>
+
+    <div class="col-3">
+     <label>&nbsp;Horario</label> <input type="time" class="form-control" name="horario" autocomplete="off" required>
+    </div>
+
+    <div class="col-9">
+     <label>&nbsp;Procedimento</label>
+     <select class="form-control" name="procedimento" required>
       <option>Fio a fio</option>
       <option>Volume Russo</option>
       <option>Volume leve</option>
       <option>Mega volume </option>
       <option>Volume brasileiro</option>
-      <option>Volume 2 D</option>
+      <option>Volume 2D </option>
+      <option>Sobrancelha designer Simples </option>
+      <option>Sobrancelha designer Henna</option>
+      <option>Sobrancelha designer de Micro </option>
     </select>
+    </div>
 
-     <button type="submit" class="btn" style="background-color: rgb(126, 9, 9); color: white; margin:10px" > Criar </button>
-            </form>
-        </div>
+<div class="col-4">
+    <label></label>
+     <select class="form-control" name="manuaplica" required>
+      <option>Aplicação</option>
+      <option>Manutenção</option>
+    </select>
+</div>
+    
+
+    </div>
+      
+    <button type="submit" class="btn" style="background-color: rgb(33, 50, 128); color: white; margin:1px;   margin-top: -66px; margin-left: 385px;"> Adicionar </button>
+
+      </div>
+   </form>
+    
+    
+    </div>
+    </div>
     </div>
 
 
-
-    <div class="card">
+    <div class="card border-light">
         <div class="card-body">
     
-    <h1 style="margin: 20px;"> Consultar Agenda </h1>
-        <form action="/listar" method="POST" >
-    <label>De: </label>
-        <input type="date" id="filtro1" name="filtro1" class="form-control"><br>
-    <label>Até: </label>
-        <input type="date" id="filtro1" name="filtro2" class="form-control"><br>
-    <button type="submit" class="btn" style="background-color: rgb(126, 9, 9); color: white; margin:10px" > Pesquisar </button>
+    <h2> Consultar Agenda </h2>
+    <form action="/listar" method="GET">
+    <div class="form-row" style="margin-left: 130px;">
+
+    <div class="col-8">
+     <label>&nbsp;De</label> <input type="date" class="form-control" name="filtro1" autocomplete="off">
+   
+     <label>&nbsp;Até</label> <input type="date" class="form-control" name="filtro2" autocomplete="off">
+    </div>
+    
+    </div>
+    <button type="submit" class="btn" style="background-color: rgb(33, 50, 128); color: white; margin:1px;   margin-top: 30px;"> Pesquisar </button>
         </form>
     
         </div>

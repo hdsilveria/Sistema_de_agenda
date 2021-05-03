@@ -14,23 +14,23 @@ div#horarios {
 ul#menul {
     font-size: 18pt;
     text-align: left;
-    margin-left: 200px;
+    margin-left: 150px;
 }
 
 div#princip {
     
-    padding: 90px;
-    background-color: white;
-   
+    padding: 30px;
+     
 }
 
 footer {
     text-align: center;
     position: absolute;
-    background-color: rgba(87, 0, 0, 0.9);
+    background-color: rgba(33, 50, 128, 0.9);
     color:white;
     width: 100%;
-    padding: 1px;
+    padding: -11px;
+    margin-top: 150px;
 }
 
 body{
@@ -39,9 +39,19 @@ body{
 
 
 h1 {
-    color: rgb(88, 2, 2);
+    color: rgb(33, 50, 128);
     font-family: "URW Chancery L, cursive";
+    margin: 20px;
 }
+
+h2 {
+    color: rgb(33, 50, 128);
+    font-family: "cursive";
+    margin: 40px;
+    text-align: center;
+   
+}
+
 
 div#Data_clientes {
    width: 30%;
@@ -71,6 +81,9 @@ div#horario_clientes {
 }
 
 nav#menu {
-    background-color:rgba(87, 0, 0, 0.9);
+    background-color:rgba(33, 50, 128, 0.9);
 }
 
+label {
+    margin: 5px;
+}

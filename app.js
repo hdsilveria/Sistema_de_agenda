@@ -2,105 +2,86 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const handlebars = require('express-handlebars')
 const app = express()
-const Sequelize = require('sequelize')
-const { where } = require('sequelize')
-const { Op } = require("sequelize");
-
-const mysql2 = require('mysql2')
+const sequelize = require("./bd_agendamento/conexão_bd")
+const clientes = require("./bd_agendamento/horarios")
+const lista_clientes = require("./bd_agendamento/lista")
 
 
-//configurar o bodyparser
 app.use(bodyParser.urlencoded({extended: false }))
 app.use(bodyParser.json())
 
-//tamplate engine
+
 app.engine("handlebars", handlebars({defaultLayout:'main'}))
 app.set('view engine', 'handlebars')
 
-//arquivos estaticos de imagens, css e jv para front-end
+
 app.use('/css',express.static('css'))
 app.use('/js',express.static('js'))
 app.use('/img',express.static('img'))
 
 
-//rotas
-
-app.get("/", function(req, res){
-    res.render('login')})
-
-
- //conexão com o banco
-
- app.post("/logar", function(req, res){
-
-    if ( !req.body.nome || !req.body.senha || req.body.senha == null || req.body.nome == null || req.body.nome !== "root" || req.body.senha !== "duarte2016" ){ res.render('login')}
-
-    else{
-    const sequelize = new Sequelize('sistema_agendamento', req.body.nome, req.body.senha, {
-        host: 'mysqlserver.cduggwjhuwst.us-east-2.rds.amazonaws.com',
-        dialect: 'mysql',
-        PORT: 3306
-      })
-      
-
-      sequelize.authenticate().then(function(){console.log("Conexão com sucesso!")}).catch(function(req, res){ res.render('login'), console.log("Conexão com erro" + err)});
-
-      const clientes = sequelize.define('clientes',{
-        cliente: { type: Sequelize.STRING(25), notNull: true},
-        horario: { type: Sequelize.STRING(40), notNull: true},
-        procedimento: { type: Sequelize.STRING(40), notNull: true},
-        data: { type: Sequelize.STRING}
-    })
-
-    
-
-    clientes.sync();
-
+ app.get("/", function(req, res){
     res.render('inserir')
+})
     
-    app.post("/criar", function(req, res){
+
+app.post("/criar_horario", function(req, res){
         clientes.create({
             cliente: req.body.cliente,
             horario: req.body.horario,
             data: req.body.data,
-            procedimento: req.body.procedimento
+            procedimento: req.body.procedimento,
+            tipo: req.body.manuaplica
         }).then(function(){console.log("Sucesso no cadastramento"), res.render('inserir')}).catch(function(err){console.log("erro" + err), res.render('inserir')})
-    })
+})
 
 
-    app.post("/listar", function(req, res){
+app.get("/listar", function(req, res){
 
-        clientes.findAll({ order: [['data','DESC'],['horario','ASC']], where: { data: {[Op.between]:[ req.body.filtro1, req.body.filtro2 ]}}}).then(function(horarios){ 
-          res.render('horarios', {horarios: horarios})
-            
-        })})
-    
+    if (req.body.filtro1 && req.body.filtro2 == null || !req.body.filtro1 && !req.body.filtro2 ){
+        clientes.findAll().then(function(horarios){ 
+            res.render('horarios', {horarios: horarios}) })
+    }
 
-    app.get('/agenda', function(req,res){
-        res.render('inserir')
-    })
+    else {
 
-    app.get("/deletar/:id", function(req, res){
+    clientes.findAll({ order: [['data','DESC'],['horario','ASC']], where: { data: {[Op.between]:[ req.body.filtro1, req.body.filtro2 ]}}}).then(function(horarios){ 
+        res.render('horarios', {horarios: horarios}) }) } 
+})
+
+
+
+app.get("/deletar/:id", function(req, res){
         clientes.destroy({
-            where: { id: req.params.id }})
-        })
-
-    app.get('/sair', function(req, res ) {
-     sequelize.close().then(function(){
-         console.log("Deslogado com sucesso"), res.redirect('/'), process.exit(1) }).catch(function(err){ console.log("Erro " + err)})
-    })
+        where: { id: req.params.id }}).then(function(){ 
+            res.redirect('/listar')  })
+})
 
 
-    app.get('/clientes', function(req, res ) {
-        res.render('clientes')
-       })
+app.get('/clientes', function(req, res){
+        lista_clientes.findAll().then(function(clientes){ res.render('clientes', {clientes: clientes}) })
+})
+       
 
 
-}})
+app.post("/add-clientes", function(req, res){
+        lista_clientes.create({
+            cliente: req.body.listacliente,
+            contato: req.body.listacontato,
+            aniversario: req.body.listaaniversario,
+            outro: req.body.listaoutros
+        }).then(function(){console.log("Sucesso no cadastramento"), res.redirect('/clientes')}).catch(function(err){console.log("erro" + err), res.redirect('/clientes')})
+})
 
 
-//start do servidor
-const PORT = process.env.PORT || 8085
-app.listen(PORT, function(req, res){
+
+app.get("/deletarcliente/:id", function(req, res){
+        lista_clientes.destroy({
+            where: { id: req.params.id }}).then(function(){ 
+            res.redirect('/clientes')  })
+})
+       
+
+app.listen(8080, function(req, res){
     console.log("Servidor em produção")
 })

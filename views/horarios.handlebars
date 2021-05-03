@@ -1,41 +1,46 @@
  <nav id="menu" class="fixed-top">        
         <ul class="nav mb-0" id="menul">
-           <li class="nav-item"><a style="color: white;"  class="nav-link" href="/agenda"> Agenda </a></li>
-           <li class="nav-item"><a style="color: white;"  class="nav-link" href="/clientes"> Clientes </a></li>
-           <li class="nav-item"><a style="color: white; margin-left: 500px;"  class="nav-link" href="/sair"> Sair </a></li>
+           <li class="nav-item"><a style="color: white;"  class="nav-link" href="/">&#128197; Agenda </a></li>
+           <li class="nav-item"><a style="color: white;"  class="nav-link" href="/clientes">&#128151; Minhas Clientes </a></li>
           
           
         </ul>
  </nav>
 
 <div id="horarios" style="padding: 2%; margin: 60px; margin-top: 100px; width: 90%;">
-{{#each horarios}}
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th scope="col">&nbsp;Data</th>
+      <th scope="col">&nbsp;Cliente</th>
+      <th scope="col">Horario</th>
+      <th scope="col">Procedimento</th>
+      <th scope="col">Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
 
-<div style= "padding: 0.1px; position:relative">
-   
-   <p>
-   <a href="/deletar/{{dataValues.id}}" style="color: rgb(126, 9, 9)" onClick="reloadThePage()"><img src="img/lixeira-logo.png"></a>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   <label>{{dataValues.data}}</label>
-    &nbsp;
-   <label style="margin-left: 50px; position:absolute;">{{dataValues.horario}}</label>
-    &nbsp;
-   <label style="margin-left: 170px; position:absolute;">{{dataValues.cliente}}</label>
-    &nbsp;
-   <label style="margin-left: 400px; position:absolute;">{{dataValues.procedimento}}</label>
-   </p><hr>
-   
-</div>
+
+{{#each horarios}}
+    <tr>
+      <td><a href="/deletar/{{dataValues.id}}" style="color: rgb(126, 9, 9)" onClick="reloadThePage()"><img src="img/lixeira-logo.png"></a></td>
+      <td>{{dataValues.data}}</td>
+      <td>{{dataValues.cliente}}</td>
+      <td>{{dataValues.horario}}</td>
+      <td>{{dataValues.procedimento}}</td>
+      <td>{{dataValues.tipo}}</td>
+
+    </tr>
 
 {{/each}}
+
+   </tbody>
+   </table>
 </div>
 
-<input type="button" value="Atualizar" style="background-color: rgb(126, 9, 9); color: white; margin:10px" onClick="document.location.reload(true)">
-
-
-<script>
-   
-function reloadThePage(){
-    alert("Cliente Deletado!");
-} 
+<script>   
+    function reloadThePage(){
+      alert("Horario Deletado!")
+    } 
 </script>

@@ -1,20 +1,76 @@
  <nav id="menu" class="fixed-top">        
         <ul class="nav mb-0" id="menul">
-           <li class="nav-item"><a style="color: white;"  class="nav-link" href="/agenda"> Agenda </a></li>
-           <li class="nav-item"><a style="color: white; margin-left: 500px;"  class="nav-link" href="/sair"> Sair </a></li>
+           <li class="nav-item"><a style="color: white;" class="nav-link" href="/">&#128197; Agenda </a></li>
           
           
         </ul>
  </nav>
 
-<h1> Lista de clientes </h1>
+<div>
+
+<h2 style="margin-top: 130px;">Inserir Nova Cliente</h2>
+<div>      
+   <form action="/add-clientes" method="POST">
+      
+    <div>
+
+<div class="form-row auto-row">
+    <div class="col-3">
+      <label>Cliente</label><input type="text" class="form-control" name="listacliente" autocomplete="off" required>
+    </div>
+    <div class="col-2">
+     <label>Contato</label><input type="number" class="form-control" name="listacontato" autocomplete="off" required>
+    </div>
+    <div class="col-2">
+     <label>Aniversário</label><input type="date" class="form-control" name="listaaniversario" autocomplete="off" required>
+    </div>
+    <div class="col-4">
+     <label>Outros</label><input type="text" class="form-control" name="listaoutros" placeholder="Email, Facebook, Instagram" autocomplete="off">
+    </div>
+    <button type="submit" class="btn" style="background-color: rgb(33, 50, 128); color: white; margin-top: 34px;"> Criar </button>
+</div>
+      
+    
+    </div>
+   </form>
+</div>
 
 
-<form action="/criar" method="POST">
+<br><br><br><br>
+<h2 style="text-align: center;"> Lista de Clientes </h2>
 
-     <label>Cliente </label>
-     <input type="text" id="cliente" name="cliente" class="form-control" autocomplete="off" min="5" required><br>
-     <labe>Procedimento</labe>
+<div id="horarios" style="margin-top: 100px;">
+        
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th scope="col">&nbsp;Cliente</th>
+      <th scope="col">&nbsp;Contato</th>
+      <th scope="col">&nbsp;Aniversário</th>
+      <th scope="col">&nbsp;Outros</th>
+    </tr>
+  </thead>
+  <tbody>
+     {{#each clientes}}
+    <tr>
+      <td><a href="/deletarcliente/{{dataValues.id}}" style="color: rgb(126, 9, 9)" onClick="recarregar()"><img src="img/lixeira-logo.png"></a></td>
+      <td>{{dataValues.cliente}}</td>
+      <td>{{dataValues.contato}}</td>
+      <td>{{dataValues.aniversario}}</td>
+      <td>{{dataValues.outro}}</td>
 
-<button type="submit" class="btn" style="background-color: rgb(126, 9, 9); color: white; margin:10px" > Criar </button>
-</form>
+    </tr>
+      {{/each}}
+   </tbody>
+   </table>
+
+</div>
+
+</div>
+
+<script>
+function recarregar() {
+    alert("Cliente deletado!")
+}
+</script>
