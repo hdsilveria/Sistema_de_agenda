@@ -22,6 +22,17 @@
 
 <p>- Por padrão, no arquivo "app.js" a aplicação estará configurada para escutar a porta 8080, podendo ser customizada caso a porta já esteja sendo utilizada;</p>
 
-<p>Ao iniciar na pagina http://localhost:8080/, existe a possibilidade de inserir um novo horario na agenda, informando o nome do cliente, data desejada, horario, procedimento opcional de aplicação ou manutenção, após adicionar, este horario estará disponivel em "consultar agenda", onde é possivel filtrar por intervalo de data, ou se pesquisar em branco, irá buscar todos os horarios; Para deletar os horarios, basta clicar no icone de lixeira;</p>
 
-<p>Não aba Clientes, ira ser direcionado para inserir no banco, uma lista de todas as clientes para controle de contato, onde é possivel adicionar a cliente, contato, Aniversario e outros meios de comunicação; Ao criar, na mesma pagina, ja estará disponivel para vizualizar, para deletar a cliente, basta clicar no icone de lixeira; </p>
+<p>- Ao iniciar na pagina http://localhost:8080/, existe a possibilidade de inserir um novo horario na agenda, informando o nome do cliente, data desejada, horario, procedimento opcional de aplicação ou manutenção, após adicionar, este horario estará disponivel em "consultar agenda", onde é possivel filtrar por intervalo de data, ou se pesquisar em branco, irá buscar todos os horarios; Para deletar os horarios, basta clicar no icone de lixeira;</p>
+
+<img src="./img/img_home_readme.png">
+
+<img src="./img/img_horarios_readme.png">
+
+<p>- Na aba Clientes, ira ser direcionado para inserir no banco, uma lista de todas as clientes para controle de contato, onde é possivel adicionar a cliente, contato, Aniversario e outros meios de comunicação;</p>
+
+<img src="./img/img_inserir_clientes_readme.png">
+
+ <p>- Na mesma pagina, ja estará disponivel para vizualizar, para deletar a cliente, basta clicar no icone de lixeira; </p>
+
+ <img src="./img/img_clientes_readme.png">
