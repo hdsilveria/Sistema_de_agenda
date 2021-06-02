@@ -1,45 +1,49 @@
  <nav id="menu" class="fixed-top">        
         <ul class="nav mb-0" id="menul">
            <li class="nav-item"><a style="color: white;" class="nav-link" href="/">&#128197; Agenda </a></li>
-          
-          
         </ul>
  </nav>
-
-<div>
-
-<h2 style="margin-top: 130px;">Inserir Nova Cliente</h2>
-<div>      
-   <form action="/add-clientes" method="POST">
+     
+  <div class="w3-row" id="InsertClientes">
+    <form action="/add-clientes" method="POST" onsubmit="salvar()">
       
-    <div>
-
-<div class="form-row auto-row">
-    <div class="col-3">
-      <label>Cliente</label><input type="text" class="form-control" name="listacliente" autocomplete="off" required>
-    </div>
-    <div class="col-2">
-     <label>Contato</label><input type="number" class="form-control" name="listacontato" autocomplete="off" required>
-    </div>
-    <div class="col-2">
-     <label>Aniversário</label><input type="date" class="form-control" name="listaaniversario" autocomplete="off" required>
-    </div>
-    <div class="col-4">
-     <label>Outros</label><input type="text" class="form-control" name="listaoutros" placeholder="Email, Facebook, Instagram" autocomplete="off">
-    </div>
-    <button type="submit" class="btn" style="background-color: rgb(33, 50, 128); color: white; margin-top: 34px;"> Criar </button>
-</div>
       
-    
-    </div>
-   </form>
+      <div class="w3-col m3" id="campoInsert">
+        <label>Cliente</label>
+        <input type="text" class="w3-input w3-border" name="listacliente" autocomplete="off" required>
+      </div>
+
+      
+      <div class="w3-col m2" id="campoInsert">
+        <label class="form-label">Contato</label>
+        <input type="number" class="w3-input w3-border" name="listacontato" autocomplete="off" required>
+      </div>
+
+      
+      <div class="w3-col m2" id="campoInsert">
+        <label class="form-label">Aniversário</label>
+        <input type="date" class="w3-input w3-border" name="listaaniversario" autocomplete="off" required>
+      </div>
+
+      
+      <div class="w3-col m4" id="campoInsert">
+        <label class="form-label">Outros</label>
+        <input type="text" class="w3-input w3-border" name="listaoutros" placeholder="Email, Facebook, Instagram" autocomplete="off">
+      </div>
+
+      <div class="w3-col">
+      <button type="submit" class="btn" style="background-color: rgb(33, 50, 128); color: white; margin-top: 34px;"> Inserir Nova Cliente </button>
+      </div>
+
+    </form>
 </div>
 
 
-<br><br><br><br>
-<h2 style="text-align: center;"> Lista de Clientes </h2>
 
-<div id="horarios" style="margin-top: 100px;">
+
+
+<div id="horarios" style="margin-top: 120px;">
+  <h2> Lista de clientes </h2><br>
         
 <table class="table">
   <thead>
@@ -67,10 +71,13 @@
 
 </div>
 
-</div>
 
 <script>
-function recarregar() {
+function recarregar() {  
     alert("Cliente deletado!")
+}
+
+function salvar() {  
+    alert("Cliente inserida com sucesso!")
 }
 </script>

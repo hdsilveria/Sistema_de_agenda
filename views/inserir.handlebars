@@ -7,29 +7,29 @@
 <div class="card-deck" style="margin-top: 55px; margin-left:-60px;">
 
 <div class="card border-light">
-    <div class="card-body">
+  <div class="card-body">
     <div class="form-row">      
 
-
 <form action="/criar_horario" method="POST">
-        <h2>Inserir Horario na Agenda</h2>
-        <div class="col-auto">
+        
+  <h2>Inserir Horario na Agenda</h2><br>
 
-   <div class="form-row">
+<div class="col-auto">
+<div class="form-row">
     
-    <div class="col-7">
-     <label>&nbsp;Cliente</label> <input type="text" class="form-control" name="cliente" autocomplete="off" required>
-    </div>
+<div class="col-7">
+  <label>&nbsp;Cliente</label> <input type="text" class="form-control" name="cliente" autocomplete="off" required>
+</div>
 
-    <div class="col-5">
-      <label>&nbsp;Data</label><input type="date" class="form-control" name="data" required>
-    </div>
+<div class="col-5">
+  <label>&nbsp;Data</label><input type="date" class="form-control" name="data" required>
+</div>
 
-    <div class="col-3">
-     <label>&nbsp;Horario</label> <input type="time" class="form-control" name="horario" autocomplete="off" required>
-    </div>
+<div class="col-3">
+  <label>&nbsp;Horario</label> <input type="time" class="form-control" name="horario" autocomplete="off" required>
+</div>
 
-    <div class="col-9">
+<div class="col-9">
      <label>&nbsp;Procedimento</label>
      <select class="form-control" name="procedimento" required>
       <option>Fio a fio</option>
@@ -42,7 +42,7 @@
       <option>Sobrancelha designer Henna</option>
       <option>Sobrancelha designer de Micro </option>
     </select>
-    </div>
+</div>
 
 <div class="col-4">
     <label></label>
@@ -51,40 +51,39 @@
       <option>Manutenção</option>
     </select>
 </div>
-    
 
-    </div>
+</div>
       
-    <button type="submit" class="btn" style="background-color: rgb(33, 50, 128); color: white; margin:1px;   margin-top: -66px; margin-left: 385px;"> Adicionar </button>
+<button type="submit" class="btn" style="background-color: rgb(33, 50, 128); color: white; margin:1px;   margin-top: -66px; margin-left: 150px;"> Adicionar </button>
 
-      </div>
-   </form>
-    
-    
-    </div>
-    </div>
-    </div>
+</form>
+</div>
+</div>
+</div>
+</div>
 
 
-    <div class="card border-light">
-        <div class="card-body">
-    
-    <h2> Consultar Agenda </h2>
+<div class="card border-light">
+  <div class="card-body">
     <form action="/listar" method="GET">
+    
+    <h2> Consultar Agenda </h2><br>
+    
     <div class="form-row" style="margin-left: 130px;">
+      <div class="col-8">
+      <label>&nbsp;De</label>
+      <input type="date" class="form-control" name="filtro1" autocomplete="off">
 
-    <div class="col-8">
-     <label>&nbsp;De</label> <input type="date" class="form-control" name="filtro1" autocomplete="off">
-   
-     <label>&nbsp;Até</label> <input type="date" class="form-control" name="filtro2" autocomplete="off">
+      <label>&nbsp;Até</label>
+      <input type="date" class="form-control" name="filtro2" autocomplete="off">
+      </div>
     </div>
-    
-    </div>
+
     <button type="submit" class="btn" style="background-color: rgb(33, 50, 128); color: white; margin:1px;   margin-top: 30px;"> Pesquisar </button>
-        </form>
     
-        </div>
-    </div>
+    </form>
+  </div>
+</div>
 
 </div>
 

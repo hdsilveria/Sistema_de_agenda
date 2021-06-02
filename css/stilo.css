@@ -6,11 +6,6 @@ input[type=number]::-webkit-inner-spin-button,
     }
 
 
-div#horarios {
-    text-align: left;
-}
-
-
 ul#menul {
     font-size: 18pt;
     text-align: left;
@@ -39,17 +34,32 @@ body{
 
 
 h1 {
-    color: rgb(33, 50, 128);
-    font-family: "URW Chancery L, cursive";
+    color: rgb(25, 54, 182);
+    font-size: 18pt;
     margin: 20px;
 }
 
 h2 {
-    color: rgb(33, 50, 128);
-    font-family: "cursive";
+    color: rgb(25, 54, 182);
+    font-size: 18pt;
     margin: 40px;
     text-align: center;
    
+}
+
+label {
+    font-size: 13pt;
+    color: rgb(104, 104, 104);
+    margin: 5px;
+
+}
+
+#InsertClientes {
+    text-align: center;
+}
+
+#campoInsert {
+    margin: 3px;
 }
 
 
@@ -84,6 +94,3 @@ nav#menu {
     background-color:rgba(33, 50, 128, 0.9);
 }
 
-label {
-    margin: 5px;
-}
