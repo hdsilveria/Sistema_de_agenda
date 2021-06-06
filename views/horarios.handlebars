@@ -1,22 +1,25 @@
  <nav id="menu" class="fixed-top">        
-        <ul class="nav mb-0" id="menul">
-           <li class="nav-item"><a style="color: white;"  class="nav-link" href="/">&#128197; Agenda </a></li>
-           <li class="nav-item"><a style="color: white;"  class="nav-link" href="/clientes">&#128151; Minhas Clientes </a></li>
-          
-          
-        </ul>
+    <ul class="nav mb-0" style="font-size: 18pt; text-align: left; margin-left: 50px;">
+        <li class="nav-item">
+          <a style="color: white;"  class="nav-link" href="/">&#128197; Agenda </a>
+        </li>
+
+        <li class="nav-item">
+          <a style="color: white;"  class="nav-link" href="/clientes">&#128151; Minhas Clientes </a>
+        </li>        
+    </ul>
  </nav>
 
-<div id="horarios" style="padding: 2%; margin: 60px; margin-top: 100px; width: 90%;">
+<div style="padding: 2%; margin: 60px; margin-top: 100px; width: 90%;">
 <table class="table">
   <thead>
     <tr>
       <th></th>
-      <th scope="col">&nbsp;Data</th>
-      <th scope="col">&nbsp;Cliente</th>
+      <th scope="col">Cliente</th>
       <th scope="col">Horario</th>
       <th scope="col">Procedimento</th>
       <th scope="col">Tipo</th>
+      <th scope="col">Data</th>
     </tr>
   </thead>
   <tbody>
@@ -25,22 +28,25 @@
 {{#each horarios}}
     <tr>
       <td><a href="/deletar/{{dataValues.id}}" style="color: rgb(126, 9, 9)" onClick="reloadThePage()"><img src="img/lixeira-logo.png"></a></td>
-      <td>{{dataValues.data}}</td>
       <td>{{dataValues.cliente}}</td>
       <td>{{dataValues.horario}}</td>
       <td>{{dataValues.procedimento}}</td>
       <td>{{dataValues.tipo}}</td>
-
+      <td>{{dataValues.data}}</td>
     </tr>
-
 {{/each}}
 
    </tbody>
    </table>
 </div>
 
-<script>   
-    function reloadThePage(){
-      alert("Horario Deletado!")
-    } 
+
+
+<script>
+
+function reloadThePage(){
+  alert("Horario Deletado!")
+}
+
 </script>
+

@@ -9,13 +9,7 @@ input[type=number]::-webkit-inner-spin-button,
 ul#menul {
     font-size: 18pt;
     text-align: left;
-    margin-left: 150px;
-}
-
-div#princip {
-    
-    padding: 30px;
-     
+    margin-left: 100px;
 }
 
 footer {
@@ -34,17 +28,22 @@ body{
 
 
 h1 {
-    color: rgb(25, 54, 182);
+    color: rgb(0, 26, 143);
     font-size: 18pt;
     margin: 20px;
 }
 
-h2 {
-    color: rgb(25, 54, 182);
-    font-size: 18pt;
+p#title {
+    color: rgb(0, 26, 143);
+    font-size: 19pt;
+    font-family: Lucida Handwriting;
     margin: 40px;
     text-align: center;
    
+}
+
+#agenda {
+    margin-top: 75px;
 }
 
 label {
@@ -56,6 +55,13 @@ label {
 
 #InsertClientes {
     text-align: center;
+    background-color: rgb(219, 224, 255);
+    padding: 2%;
+    margin-top: 50px;
+}
+
+#insertAgenda {
+    background-color: rgb(219, 224, 255);
 }
 
 #campoInsert {

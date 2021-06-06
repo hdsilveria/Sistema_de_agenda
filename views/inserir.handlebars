@@ -4,15 +4,15 @@
         </ul>
  </nav>
 
-<div class="card-deck" style="margin-top: 55px; margin-left:-60px;">
+<div class="card-deck" id="agenda">
 
-<div class="card border-light">
+<div class="card border-light" id="insertAgenda">
   <div class="card-body">
     <div class="form-row">      
 
 <form action="/criar_horario" method="POST">
         
-  <h2>Inserir Horario na Agenda</h2><br>
+  <p id="title">Inserir Horario na Agenda</p>
 
 <div class="col-auto">
 <div class="form-row">
@@ -63,19 +63,23 @@
 </div>
 
 
-<div class="card border-light">
+<div class="card border-light" id="insertAgenda">
   <div class="card-body">
-    <form action="/listar" method="GET">
+    <form action="/listar" method="POST">
     
-    <h2> Consultar Agenda </h2><br>
-    
-    <div class="form-row" style="margin-left: 130px;">
-      <div class="col-8">
-      <label>&nbsp;De</label>
-      <input type="date" class="form-control" name="filtro1" autocomplete="off">
+    <p id="title"> Consultar Agenda </p> 
 
-      <label>&nbsp;Até</label>
-      <input type="date" class="form-control" name="filtro2" autocomplete="off">
+    <div class="col-auto">    
+      <div class="form-row">
+        <div class="col-6">
+          <label>&nbsp;De</label>
+          <input type="date" class="form-control" name="filtro1" autocomplete="off">
+        </div>
+
+        <div class="col-6">
+          <label>&nbsp;Até</label>
+          <input type="date" class="form-control" name="filtro2" autocomplete="off">
+        </div>
       </div>
     </div>
 

@@ -3,12 +3,11 @@ const bodyParser = require('body-parser')
 const handlebars = require('express-handlebars')
 const app = express()
 
-
 const sequelize = require("./bd_agendamento/conexão_bd")
 const clientes = require("./bd_agendamento/horarios")
 const lista_clientes = require("./bd_agendamento/lista")
-const { where } = require('sequelize')
 const { Op } = require("sequelize");
+const moment = require('moment');
 
 
 app.use(bodyParser.urlencoded({extended: false }))
@@ -28,19 +27,24 @@ app.use('/img',express.static('img'))
 })
 
 
-app.get("/listar", (req, res) => {
+app.post("/listar", (req, res) => {
 
-    if ( !req.body.filtro1 && !req.body.filtro2 ){
-        clientes.findAll().then((horarios) => {
-            console.log("Pesquisou todos!")
-            res.render('horarios', {horarios: horarios}) })
+if ( req.body.filtro1 && req.body.filtro2 == null || !req.body.filtro1 && !req.body.filtro2 ){
+
+    clientes.findAll().then((horarios) => {
+        console.log("Pesquisou todos!"),
+        res.render('horarios', { horarios: horarios }) })
     }
 
-    else {
-        clientes.findAll({ order: [['data','DESC'],['horario','ASC']], where: 
-        { data: {[Op.between]: [ req.body.filtro1, req.body.filtro2 ]} } })
-            .then((horarios) => { 
-                res.render('horarios', {horarios: horarios}) })
+else {
+    clientes.findAll({ order: [['data','DESC'],['horario','ASC']], 
+        where: { data: {[Op.between]:[ req.body.filtro1, req.body.filtro2 ]} } })
+        .then((horarios) => { 
+            res.render('horarios', {horarios: horarios}) 
+        })
+        .catch((err) => {
+            console.log("erro" + err)
+        })
     }
 })
 
