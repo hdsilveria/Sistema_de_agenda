@@ -27,13 +27,22 @@
 
 {{#each horarios}}
     <tr>
-      <td><a href="/deletar/{{dataValues.id}}" style="color: rgb(126, 9, 9)" onClick="reloadThePage()"><img src="img/lixeira-logo.png"></a></td>
+      <td><a href="/deletar/{{dataValues.id}}" onClick="deletAlert()"><img src="img/lixeira-logo.png"></a></td>
       <td>{{dataValues.cliente}}</td>
       <td>{{dataValues.horario}}</td>
       <td>{{dataValues.procedimento}}</td>
       <td>{{dataValues.tipo}}</td>
-      <td>{{dataValues.data}}</td>
+      <td id="{{dataValues.id}}">{{dataValues.data}}</td>
     </tr>
+
+<script>
+
+var dataFormat = document.getElementById("{{dataValues.id}}").innerText;
+var format = ( moment(dataFormat,'YYYY-MM-DD').format('DD/MM/YYYY'))
+document.getElementById("{{dataValues.id}}").innerText = format;
+
+</script>
+
 {{/each}}
 
    </tbody>
@@ -44,9 +53,11 @@
 
 <script>
 
-function reloadThePage(){
+function deletAlert(){
   alert("Horario Deletado!")
 }
+
+
 
 </script>
 

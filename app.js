@@ -7,7 +7,6 @@ const sequelize = require("./bd_agendamento/conexão_bd")
 const clientes = require("./bd_agendamento/horarios")
 const lista_clientes = require("./bd_agendamento/lista")
 const { Op } = require("sequelize");
-const moment = require('moment');
 
 
 app.use(bodyParser.urlencoded({extended: false }))
@@ -31,21 +30,27 @@ app.post("/listar", (req, res) => {
 
 if ( req.body.filtro1 && req.body.filtro2 == null || !req.body.filtro1 && !req.body.filtro2 ){
 
-    clientes.findAll().then((horarios) => {
-        console.log("Pesquisou todos!"),
+    clientes.findAll({ order: [['data','DESC'],['horario','DESC']]}).then((horarios) => {
         res.render('horarios', { horarios: horarios }) })
     }
 
 else {
-    clientes.findAll({ order: [['data','DESC'],['horario','ASC']], 
+    
+    clientes.findAll({ order: [['data','DESC'],['horario','DESC']], 
         where: { data: {[Op.between]:[ req.body.filtro1, req.body.filtro2 ]} } })
-        .then((horarios) => { 
-            res.render('horarios', {horarios: horarios}) 
+        .then((horarios) => {
+            res.render('horarios', { horarios: horarios })
         })
         .catch((err) => {
             console.log("erro" + err)
         })
     }
+})
+
+
+app.get('/listarTodos', (req, res) => {
+    clientes.findAll({ order: [['data','DESC'],['horario','DESC']]}).then((horarios) => {
+        res.render('horarios', { horarios: horarios }) })
 })
 
 
@@ -104,8 +109,9 @@ app.get("/deletarcliente/:id", (req, res) => {
 
 app.get("/deletar/:id", (req, res) => {
     clientes.destroy({
-        where: { id: req.params.id }}).then(() => { 
-        res.redirect('/listar')  })
+        where: { id: req.params.id }})
+    .then(() => { 
+        res.redirect('/listarTodos') })
 })
        
 

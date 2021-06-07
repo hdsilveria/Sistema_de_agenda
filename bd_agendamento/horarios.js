@@ -7,11 +7,11 @@ const clientes = sequelize.define('clientes',{
     cliente: { type: Sequelize.STRING(35), notNull: true},
     horario: { type: Sequelize.STRING(40), notNull: true},
     procedimento: { type: Sequelize.STRING(40), notNull: true},
-    data: { type: Sequelize.DATEONLY },
+    data: { type: Sequelize.DATEONLY},
     tipo: { type: Sequelize.STRING}
   })
 
-clientes.sync()
+clientes.sync({})
 
 
 module.exports = clientes;

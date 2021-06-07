@@ -16,7 +16,7 @@
       
       <div class="w3-col m2" id="campoInsert">
         <label class="form-label">Contato</label>
-        <input type="number" class="w3-input w3-border" name="listacontato" autocomplete="off" required>
+        <input type="tel" id="tel" placeholder="(11)91234-5678" class="w3-input w3-border" name="listacontato" autocomplete="off" minlength="15" maxlength="15" required>
       </div>
 
       
@@ -58,10 +58,16 @@
       <td><a href="/deletarcliente/{{dataValues.id}}" style="color: rgb(126, 9, 9)" onClick="recarregar()"><img src="img/lixeira-logo.png"></a></td>
       <td>{{dataValues.cliente}}</td>
       <td>{{dataValues.contato}}</td>
-      <td>{{dataValues.aniversario}}</td>
+      <td id="{{dataValues.id}}">{{dataValues.aniversario}}</td>
       <td>{{dataValues.outro}}</td>
-
     </tr>
+
+<script>
+  var dataFormat = document.getElementById("{{dataValues.id}}").innerText;
+  var format = ( moment(dataFormat,'YYYY-MM-DD').format('DD/MM/YYYY'))
+  document.getElementById("{{dataValues.id}}").innerText = format;
+</script>
+
       {{/each}}
    </tbody>
    </table>
@@ -77,4 +83,16 @@ function recarregar() {
 function salvar() {  
     alert("Cliente inserida com sucesso!")
 }
+
+const tel = document.getElementById('tel') 
+tel.addEventListener('keypress', (e) => mascaraTelefone(e.target.value)) 
+tel.addEventListener('change', (e) => mascaraTelefone(e.target.value)) 
+
+const mascaraTelefone = (valor) => {
+    valor = valor.replace(/\D/g, "")
+    valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2")
+    valor = valor.replace(/(\d)(\d{4})$/, "$1-$2")
+    tel.value = valor 
+}
+
 </script>
